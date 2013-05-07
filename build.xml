@@ -1,5 +1,6 @@
 <?xml version="1.0" ?>
 <project default="main">
+			
     <target name="main" depends="compile, compress" description="Main target">
         <echo>
             Building the .jar file.
@@ -7,10 +8,14 @@
     </target>
   
     <target name="compile" description="Compilation target">
-        <javac srcdir="src/javalearn"/>
+        <javac srcdir="src/javalearn" includes="*.java" />
     </target>
   
   <target name="compress" description="Compression target">
-        <jar jarfile="Project.jar" basedir="src/javalearn" includes="Main.class" />
+        <jar jarfile="Project.jar" basedir="src/javalearn" includes="*.class" >
+        	<manifest>
+  				<attribute name="Main Class" value="javalearn.Main" />
+        	</manifest>
+  		</jar>
   </target>
 </project>
